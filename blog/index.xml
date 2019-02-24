@@ -6,18 +6,21 @@
     <description>Recent content in Blogs on Watchman</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Sep 2018 14:51:12 +0600</lastBuildDate>
+    <lastBuildDate>Sun, 24 Feb 2019 00:24:12 +0600</lastBuildDate>
     
 	<atom:link href="https://bhavesh00.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Are You Doing the Right Way</title>
-      <link>https://bhavesh00.github.io/blog/are-you-doing-the-right-way/</link>
-      <pubDate>Wed, 12 Sep 2018 14:51:12 +0600</pubDate>
+      <title>About the application</title>
+      <link>https://bhavesh00.github.io/blog/docs/</link>
+      <pubDate>Sun, 24 Feb 2019 00:24:12 +0600</pubDate>
       
-      <guid>https://bhavesh00.github.io/blog/are-you-doing-the-right-way/</guid>
-      <description></description>
+      <guid>https://bhavesh00.github.io/blog/docs/</guid>
+      <description>The code for the application can be found here .
+&amp;ldquo;The Watchman&amp;rdquo; is a video surveillance tool which helps a given user to perform human face recognition using an existing knowledge base and validate whether the human in the given video is a threat to the user or not.
+ Methodology
+ The way our application achieves the above functionality is making use of image detection features of OpenCV. We detect the various images in the given video stream and try to map them to existing images in the knowledge base.</description>
     </item>
     
   </channel>
