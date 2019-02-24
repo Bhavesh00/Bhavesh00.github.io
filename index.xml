@@ -13,10 +13,10 @@
     
     <item>
       <title>About the application</title>
-      <link>https://bhavesh00.github.io/blog/docs/</link>
+      <link>https://bhavesh00.github.io/blog/blog/</link>
       <pubDate>Sun, 24 Feb 2019 00:24:12 +0600</pubDate>
       
-      <guid>https://bhavesh00.github.io/blog/docs/</guid>
+      <guid>https://bhavesh00.github.io/blog/blog/</guid>
       <description>The code for the application can be found here .
 &amp;ldquo;The Watchman&amp;rdquo; is a video surveillance tool which helps a given user to perform human face recognition using an existing knowledge base and validate whether the human in the given video is a threat to the user or not.
  Methodology
