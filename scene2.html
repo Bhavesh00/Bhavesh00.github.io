@@ -13,7 +13,7 @@
 
     <style>
         .bar {
-            fill: steelblue;
+            fill: rgb(180, 70, 70);
         }
     </style>
     
@@ -27,11 +27,7 @@
                 <h6 class="text-muted card-subtitle mb-2">Created by Bhavesh Manivannan (bm12) for the CS416 Data Visualization Course.</h6>
                 <br>
                 
-                <!-- Insert Graph Here -->
-
-
                 <button class="btn btn-primary" type="button" onclick="location.href='scene1.html'" >Previous</button>
-
 
                 <button class="btn btn-primary" type="button" onclick="location.href='scene3.html'" >Next</button>
             </div>
@@ -60,6 +56,13 @@
             var width = svg.attr("width") - margin;
             var height = svg.attr("height") - margin;
 
+            svg.append("text")
+                .attr("transform", "translate(100,0)")
+                .attr("x", width/2 - 100)
+                .attr("y", 50)
+                .attr("font-size", "24px")
+                .text("COVID-19 Deaths in USA");
+
             var xScale = d3.scaleBand().range([0, width]).padding(0.4);
             var yScale = d3.scaleLinear().range([height, 0]);
 
@@ -70,11 +73,31 @@
             xScale.domain(data.map(function(d) { return d.Postal; }));
             yScale.domain([260, 64417]);
 
-            g.append("g").attr("transform", "translate(0," + height + ")").call(d3.axisBottom(xScale));
+            g.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(xScale))
+            .append("text")
+            .attr("y", 45)
+            .attr("x", width/2)
+            .attr("text-anchor", "end")
+            .attr("stroke", "black")
+            .style("font", "20px times")
+            .text("State");
             
             g.append("g").call(d3.axisLeft(yScale).tickFormat(function(d){
                 return  d;
-            }).ticks(15));
+            })
+            .ticks(15))
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("x", -height/2 + 100)
+            .attr("y", 90)
+            .attr("dy", "-8.1em")
+            .attr("text-anchor", "end")
+            .attr("stroke", "black")
+            .style("font", "20px times")
+            .text("Number of Deaths");
+
 
             g.selectAll(".bar")
             .data(data)
