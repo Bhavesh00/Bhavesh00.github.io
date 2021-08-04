@@ -55,10 +55,10 @@
                 <!-- Insert Graph Here -->
 
 
-                <button class="btn btn-primary" type="button" onclick="location.href='scene2.html'" >Previous</button>
+                <button class="btn btn-primary" type="button" onclick="location.href='scene3.html'" >Previous</button>
 
 
-                <button class="btn btn-primary" type="button" onclick="location.href='scene4.html'" >Next</button>
+                <button class="btn btn-primary" type="button" onclick="location.href='index.html'" >Home</button>
             </div>
         </div>
 
@@ -68,6 +68,9 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <!-- Load d3-annotation -->
+        <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
 
         <svg id = "chart" width="1500" height="800"></svg>
 
@@ -154,7 +157,45 @@
                .attr("font-size", "24px")
                .attr("class", "title")
 
-            
+               const annotations = [
+                {
+                    note: {
+                        label: "This state has 64,417 deaths which is 10.556% of the total COVID-19 Deaths in the United States.",
+                        title: "California has the Highest Percentage of Deaths",
+                        wrap: 200, 
+                        padding: 10   
+                    
+                    },
+
+                    color: ["#cc0000"],
+                    x: 120,
+                    y: -250,
+                    dy: 0,
+                    dx: 200
+                }, 
+                {
+                    note: {
+                            label: "This state has 260 deaths which is 0.0426% of the total COVID-19 Deaths in the United States.",
+                            title: "Vermont has the Lowest Percentage of Deaths",
+                            wrap: 200,  
+                            padding: 10  
+                        
+                    },
+
+                    color: ["#cc0000"],
+                    x: 0,
+                    y: -250,
+                    dy: 0,
+                    dx: -300
+                }
+
+            ]
+
+            const makeAnnotations = d3.annotation()
+                .annotations(annotations)
+
+            g.append("g")
+                .call(makeAnnotations)
 
             // console.log(data);
 
