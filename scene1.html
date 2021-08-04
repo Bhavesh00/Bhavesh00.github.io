@@ -16,6 +16,16 @@
             fill: rgb(202, 168, 73);
         }
 
+        .toolTip {
+            position: absolute;
+            display: none;
+            min-width: 80px;
+            height: auto;
+            background: none repeat scroll 0 0 #ffffff;
+            border: 1px solid #6F257F;
+            padding: 14px;
+            text-align: center;
+        }
         
     </style>
     
@@ -57,6 +67,8 @@
             var margin = 200;
             var width = svg.attr("width") - margin;
             var height = svg.attr("height") - margin;
+
+            var tooltip = d3.select("body").append("div").attr("class", "toolTip");
 
             svg.append("text")
                 .attr("transform", "translate(100,0)")
@@ -108,7 +120,15 @@
             .attr("x", function(d) { return xScale(d.Postal); })
             .attr("y", function(d) { return yScale(d.Cases); })
             .attr("width", xScale.bandwidth())
-            .attr("height", function(d) { return height - yScale(d.Cases); });
+            .attr("height", function(d) { return height - yScale(d.Cases); })
+            .on("mousemove", function(d){
+                tooltip
+                .style("left", d3.event.pageX - 100 + "px")
+                .style("top", d3.event.pageY - 150 + "px")
+                .style("display", "inline-block")
+                .html((d.State) + "<br>"  + (d.Cases) + " Cases" + "<br>" + "State Case Percentage: " + (d.Case_Percentage) + "%");
+                })
+    		.on("mouseout", function(d){ tooltip.style("display", "none");});
             
 
             // console.log(data);

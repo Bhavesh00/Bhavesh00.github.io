@@ -25,6 +25,21 @@
             fill: teal;
             font-weight: bold;
         }
+
+        .tooltip {
+                background: #eee;
+                box-shadow: 0 0 5px #999999;
+                color: #333;
+                font-size: 18px;
+                padding: 10px;
+                position: absolute;
+                text-align: center;
+                width: 150px;
+                z-index: 10;
+                display: block;
+                top: 500px;  
+                left: 675px; 
+        }     
     </style>
     
   </head>
@@ -40,10 +55,10 @@
                 <!-- Insert Graph Here -->
 
 
-                <button class="btn btn-primary" type="button" onclick="location.href='scene3.html'" >Previous</button>
+                <button class="btn btn-primary" type="button" onclick="location.href='scene2.html'" >Previous</button>
 
 
-                <button class="btn btn-primary" type="button" onclick="location.href='index.html'" >Home</button>
+                <button class="btn btn-primary" type="button" onclick="location.href='scene4.html'" >Next</button>
             </div>
         </div>
 
@@ -57,9 +72,7 @@
         <svg id = "chart" width="1500" height="800"></svg>
 
         <script>
-            // https://stackoverflow.com/questions/20847161/how-can-i-generate-as-many-colors-as-i-want-using-d3/30912617
-            // http://jnnnnn.github.io/category-colors-2L-inplace.html
-            // https://bl.ocks.org/cflavs/ff1c6005fd7edad32641
+           
             var svg = d3.select("#chart");
             var data = [{"State":"Alabama","Cases":587405,"Deaths":11536,"Population":4888949,"Case_Percentage":12.01495454,"Death_Percentage":0.235960735,"Postal":"AL","Case_Total_Percentage":1.685773419,"Death_Total_Percentage":1.890465734},{"State":"Alaska","Cases":74853,"Deaths":372,"Population":738068,"Case_Percentage":10.14174846,"Death_Percentage":0.05040186,"Postal":"AK","Case_Total_Percentage":0.214818052,"Death_Total_Percentage":0.06096162},{"State":"Arizona","Cases":929541,"Deaths":18251,"Population":7123898,"Case_Percentage":13.0482076,"Death_Percentage":0.256194011,"Postal":"AZ","Case_Total_Percentage":2.667657765,"Death_Total_Percentage":2.990888532},{"State":"Arkansas","Cases":388436,"Deaths":6157,"Population":3020327,"Case_Percentage":12.86072667,"Death_Percentage":0.203852099,"Postal":"AR","Case_Total_Percentage":1.114759125,"Death_Total_Percentage":1.008980368},{"State":"California","Cases":4040811,"Deaths":64417,"Population":39776830,"Case_Percentage":10.15870546,"Death_Percentage":0.161946037,"Postal":"CA","Case_Total_Percentage":11.5965846,"Death_Total_Percentage":10.55635672},{"State":"Colorado","Cases":578713,"Deaths":7097,"Population":5684203,"Case_Percentage":10.18107552,"Death_Percentage":0.124854795,"Postal":"CO","Case_Total_Percentage":1.660828547,"Death_Total_Percentage":1.163023172},{"State":"Connecticut","Cases":354335,"Deaths":8293,"Population":3588683,"Case_Percentage":9.873677892,"Death_Percentage":0.231087561,"Postal":"CT","Case_Total_Percentage":1.016893837,"Death_Total_Percentage":1.359018059},{"State":"Delaware","Cases":111563,"Deaths":1833,"Population":971180,"Case_Percentage":11.48736588,"Death_Percentage":0.188739472,"Postal":"DE","Case_Total_Percentage":0.320170819,"Death_Total_Percentage":0.300383468},{"State":"District of Columbia","Cases":50398,"Deaths":1149,"Population":703608,"Case_Percentage":7.162795193,"Death_Percentage":0.163301156,"Postal":"DC","Case_Total_Percentage":0.144635488,"Death_Total_Percentage":0.188292747},{"State":"Florida","Cases":2590699,"Deaths":39079,"Population":21312211,"Case_Percentage":12.15593727,"Death_Percentage":0.183364363,"Postal":"FL","Case_Total_Percentage":7.434958011,"Death_Total_Percentage":6.404083773},{"State":"Georgia","Cases":1153494,"Deaths":20978,"Population":10545138,"Case_Percentage":10.93863352,"Death_Percentage":0.198935282,"Postal":"GA","Case_Total_Percentage":3.310372782,"Death_Total_Percentage":3.43777654},{"State":"Hawaii","Cases":41090,"Deaths":534,"Population":1426393,"Case_Percentage":2.880692768,"Death_Percentage":0.037437088,"Postal":"HI","Case_Total_Percentage":0.117922779,"Death_Total_Percentage":0.087509423},{"State":"Idaho","Cases":200564,"Deaths":2199,"Population":1753860,"Case_Percentage":11.43557639,"Death_Percentage":0.125380589,"Postal":"ID","Case_Total_Percentage":0.57559173,"Death_Total_Percentage":0.360361837},{"State":"Illinois","Cases":1423590,"Deaths":25916,"Population":12768320,"Case_Percentage":11.14939162,"Death_Percentage":0.202971103,"Postal":"IL","Case_Total_Percentage":4.085512009,"Death_Total_Percentage":4.246992888},{"State":"Indiana","Cases":774662,"Deaths":14005,"Population":6699629,"Case_Percentage":11.56275967,"Death_Percentage":0.209041426,"Postal":"IN","Case_Total_Percentage":2.223175847,"Death_Total_Percentage":2.295073908},{"State":"Iowa","Cases":379797,"Deaths":6183,"Population":3160553,"Case_Percentage":12.01678947,"Death_Percentage":0.195630322,"Postal":"IA","Case_Total_Percentage":1.089966356,"Death_Total_Percentage":1.013241126},{"State":"Kansas","Cases":334159,"Deaths":5294,"Population":2918515,"Case_Percentage":11.44962421,"Death_Percentage":0.18139362,"Postal":"KS","Case_Total_Percentage":0.958991428,"Death_Total_Percentage":0.867555963},{"State":"Kentucky","Cases":483719,"Deaths":7378,"Population":4472265,"Case_Percentage":10.81597356,"Death_Percentage":0.164972335,"Postal":"KY","Case_Total_Percentage":1.388208531,"Death_Total_Percentage":1.209072138},{"State":"Louisiana","Cases":541679,"Deaths":10999,"Population":4682509,"Case_Percentage":11.5681358,"Death_Percentage":0.234895437,"Postal":"LA","Case_Total_Percentage":1.554545943,"Death_Total_Percentage":1.802464685},{"State":"Maine","Cases":70463,"Deaths":900,"Population":1341582,"Case_Percentage":5.252232066,"Death_Percentage":0.067084979,"Postal":"ME","Case_Total_Percentage":0.202219342,"Death_Total_Percentage":0.147487791},{"State":"Maryland","Cases":469314,"Deaths":9828,"Population":6079602,"Case_Percentage":7.719485585,"Death_Percentage":0.161655319,"Postal":"MD","Case_Total_Percentage":1.346868117,"Death_Total_Percentage":1.610566681},{"State":"Massachusetts","Cases":719780,"Deaths":18082,"Population":6895917,"Case_Percentage":10.43777064,"Death_Percentage":0.262213133,"Postal":"MA","Case_Total_Percentage":2.065671881,"Death_Total_Percentage":2.963193602},{"State":"Michigan","Cases":1009618,"Deaths":21173,"Population":9991177,"Case_Percentage":10.10509573,"Death_Percentage":0.211916974,"Postal":"MI","Case_Total_Percentage":2.897467995,"Death_Total_Percentage":3.469732228},{"State":"Minnesota","Cases":612794,"Deaths":7761,"Population":5628162,"Case_Percentage":10.88799505,"Death_Percentage":0.137895817,"Postal":"MN","Case_Total_Percentage":1.758636437,"Death_Total_Percentage":1.271836387},{"State":"Mississippi","Cases":343505,"Deaths":7543,"Population":2982785,"Case_Percentage":11.51625075,"Death_Percentage":0.252884469,"Postal":"MS","Case_Total_Percentage":0.985813192,"Death_Total_Percentage":1.236111566},{"State":"Missouri","Cases":697481,"Deaths":10313,"Population":6135888,"Case_Percentage":11.36723812,"Death_Percentage":0.168076732,"Postal":"MO","Case_Total_Percentage":2.001676748,"Death_Total_Percentage":1.690046213},{"State":"Montana","Cases":116480,"Deaths":1704,"Population":1062330,"Case_Percentage":10.96457786,"Death_Percentage":0.160402135,"Postal":"MT","Case_Total_Percentage":0.334281948,"Death_Total_Percentage":0.279243552},{"State":"Nebraska","Cases":228450,"Deaths":2550,"Population":1932549,"Case_Percentage":11.82117504,"Death_Percentage":0.131950083,"Postal":"NE","Case_Total_Percentage":0.655620803,"Death_Total_Percentage":0.417882075},{"State":"Nevada","Cases":356401,"Deaths":5912,"Population":3056824,"Case_Percentage":11.65919268,"Death_Percentage":0.193403349,"Postal":"NV","Case_Total_Percentage":1.022822979,"Death_Total_Percentage":0.968830913},{"State":"New Hampshire","Cases":100657,"Deaths":1387,"Population":1350575,"Case_Percentage":7.452899691,"Death_Percentage":0.102696999,"Postal":"NH","Case_Total_Percentage":0.288872064,"Death_Total_Percentage":0.227295074},{"State":"New Jersey","Cases":1040281,"Deaths":26607,"Population":9032872,"Case_Percentage":11.51661399,"Death_Percentage":0.294557479,"Postal":"NJ","Case_Total_Percentage":2.985466685,"Death_Total_Percentage":4.360230736},{"State":"New Mexico","Cases":210416,"Deaths":4412,"Population":2090708,"Case_Percentage":10.06434184,"Death_Percentage":0.211028991,"Postal":"NM","Case_Total_Percentage":0.603865646,"Death_Total_Percentage":0.723017928},{"State":"New York","Cases":2151035,"Deaths":53274,"Population":19862512,"Case_Percentage":10.82962215,"Death_Percentage":0.268213809,"Postal":"NY","Case_Total_Percentage":6.17318141,"Death_Total_Percentage":8.730293992},{"State":"North Carolina","Cases":1049288,"Deaths":13651,"Population":10390149,"Case_Percentage":10.09887346,"Death_Percentage":0.131384064,"Postal":"NC","Case_Total_Percentage":3.011315564,"Death_Total_Percentage":2.237062043},{"State":"North Dakota","Cases":111705,"Deaths":1570,"Population":755238,"Case_Percentage":14.79070174,"Death_Percentage":0.207881489,"Postal":"ND","Case_Total_Percentage":0.32057834,"Death_Total_Percentage":0.257284258},{"State":"Ohio","Cases":1130134,"Deaths":20492,"Population":11694664,"Case_Percentage":9.663672253,"Death_Percentage":0.175225214,"Postal":"OH","Case_Total_Percentage":3.243332721,"Death_Total_Percentage":3.358133132},{"State":"Oklahoma","Cases":480635,"Deaths":7485,"Population":3940521,"Case_Percentage":12.19724498,"Death_Percentage":0.189949502,"Postal":"OK","Case_Total_Percentage":1.379357866,"Death_Total_Percentage":1.226606798},{"State":"Oregon","Cases":219756,"Deaths":2886,"Population":4199563,"Case_Percentage":5.232830178,"Death_Percentage":0.068721436,"Postal":"OR","Case_Total_Percentage":0.630670191,"Death_Total_Percentage":0.472944184},{"State":"Pennsylvania","Cases":1230824,"Deaths":27855,"Population":12823989,"Case_Percentage":9.597824827,"Death_Percentage":0.217210105,"Postal":"PA","Case_Total_Percentage":3.532299491,"Death_Total_Percentage":4.56474714},{"State":"Rhode Island","Cases":154339,"Deaths":2740,"Population":1061712,"Case_Percentage":14.53680471,"Death_Percentage":0.258073753,"Postal":"RI","Case_Total_Percentage":0.442932191,"Death_Total_Percentage":0.449018387},{"State":"South Carolina","Cases":617148,"Deaths":9904,"Population":5088916,"Case_Percentage":12.12729784,"Death_Percentage":0.194619051,"Postal":"SC","Case_Total_Percentage":1.771131832,"Death_Total_Percentage":1.623021205},{"State":"South Dakota","Cases":125216,"Deaths":2043,"Population":877790,"Case_Percentage":14.2649153,"Death_Percentage":0.232743595,"Postal":"SD","Case_Total_Percentage":0.359353094,"Death_Total_Percentage":0.334797286},{"State":"Tennessee","Cases":879858,"Deaths":12638,"Population":6782564,"Case_Percentage":12.97235087,"Death_Percentage":0.186330715,"Postal":"TN","Case_Total_Percentage":2.525074231,"Death_Total_Percentage":2.07105634},{"State":"Texas","Cases":3133894,"Deaths":53420,"Population":28704330,"Case_Percentage":10.9178441,"Death_Percentage":0.186104326,"Postal":"TX","Case_Total_Percentage":8.993854671,"Death_Total_Percentage":8.75421979},{"State":"Utah","Cases":432539,"Deaths":2451,"Population":3159345,"Case_Percentage":13.69078084,"Death_Percentage":0.077579372,"Postal":"UT","Case_Total_Percentage":1.241328809,"Death_Total_Percentage":0.401658418},{"State":"Vermont","Cases":24889,"Deaths":260,"Population":623960,
             "Case_Percentage":3.988877492,"Death_Percentage":0.041669338,"Postal":"VT","Case_Total_Percentage":0.071428086,"Death_Total_Percentage":0.042607584},{"State":"Virginia","Cases":694384,"Deaths":11532,"Population":8525660,"Case_Percentage":8.14463631,"Death_Percentage":0.135262255,"Postal":"VA","Case_Total_Percentage":1.992788774,"Death_Total_Percentage":1.889810232},{"State":"Washington","Cases":474520,"Deaths":6165,"Population":7530552,"Case_Percentage":6.301264502,"Death_Percentage":0.081866509,"Postal":"WA","Case_Total_Percentage":1.361808638,"Death_Total_Percentage":1.01029137},{"State":"West Virginia","Cases":167016,"Deaths":2946,"Population":1803077,"Case_Percentage":9.262832369,"Death_Percentage":0.163387365,"Postal":"WV","Case_Total_Percentage":0.479313478,"Death_Total_Percentage":0.482776703},{"State":"Wisconsin","Cases":687382,"Deaths":8290,"Population":5818049,"Case_Percentage":11.81464783,"Death_Percentage":0.142487628,"Postal":"WI","Case_Total_Percentage":1.972693975,"Death_Total_Percentage":1.358526433},{"State":"Wyoming","Cases":65127,"Deaths":776,"Population":573720,"Case_Percentage":11.35170466,"Death_Percentage":0.135257617,"Postal":"WY","Case_Total_Percentage":0.186905739,"Death_Total_Percentage":0.127167251}];
@@ -75,7 +88,20 @@
             var pie = d3.pie().value(function(d) { 
                     return d.Death_Total_Percentage; 
                 });
-            
+
+            var tooltip = d3.select('body')                              
+                        .append('div')                                                
+                        .attr('class', 'tooltip');                                   
+                                    
+            tooltip.append('div')                                           
+                    .attr('class', 'state');                                      
+                            
+            tooltip.append('div')                                           
+                    .attr('class', 'deaths');                                      
+
+            tooltip.append('div')                                          
+                    .attr('class', 'percentage'); 
+                            
             var path = d3.arc()
                 .outerRadius(radius - 10)
                 .innerRadius(radius- radius / 3);
@@ -99,12 +125,32 @@
                         return "translate(" + label.centroid(d) + ")"; 
                 })
                .text(function(d) { return d.data.Postal; });
+
+            arc.on('mouseover', function(d){
+                    tooltip.select('.state').html(d.data.State);                
+                    tooltip.select('.deaths').html(d.data.Deaths + " Deaths");                
+                    tooltip.select('.percentage').html(d.data.Death_Total_Percentage + '%');            
+                    tooltip.style('display', 'block'); 
+                    tooltip.style('opacity',2);      
+                    console.log(d.data.State);
+                });
+            
+            
+
+            arc.on('mousemove', function(d) {                            
+                tooltip.style('opacity',2);      
+             });          
+
+            
+            arc.on('mouseout', function() {                             
+                tooltip.style('display', 'none')});
+                
             
             
             svg.append("g")
-               .attr("transform", "translate(" + (width / 2 - 175) + "," + 50 + ")")
+               .attr("transform", "translate(" + (width / 2 - 320) + "," + 50 + ")")
                .append("text")
-               .text("Percentages of COVID-19 Deaths")
+               .text("Percentages of Total COVID-19 Deaths in the United States")
                .attr("font-size", "24px")
                .attr("class", "title")
 
